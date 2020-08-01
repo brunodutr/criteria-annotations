@@ -1,15 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.brunodutr</groupId>
 	<artifactId>criteria-annotations</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
-
+	<name>criteria-annotations</name>
+	
+	<description>Criteria Annotations</description>
+	<url>https://github.com/brunodutr/criteria-annotations</url>
+	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+	<developers>
+		<developer>
+			<id>brunodutr</id>
+			<name>Bruno Dutra</name>
+			<email>brun_dutra@hotmail.com</email>
+			<url>https://github.com/brunodutr</url>
+		</developer>
+	</developers>
 	
+	<licenses>
+
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
 	<scm>
 		<connection>scm:git:git://github.com/brunodutr/criteria-annotations.git</connection>
 		<developerConnection>scm:git:git@github.com:brunodutr/criteria-annotations.git</developerConnection>
