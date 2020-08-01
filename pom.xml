@@ -1,11 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.brunodutr</groupId>
 	<artifactId>criteria-annotations</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>criteria-annotations</name>
 	
 	<description>Criteria Annotations</description>
@@ -39,7 +37,7 @@
 		<connection>scm:git:git://github.com/brunodutr/criteria-annotations.git</connection>
 		<developerConnection>scm:git:git@github.com:brunodutr/criteria-annotations.git</developerConnection>
 		<url>https://github.com/brunodutr/criteria-annotations</url>
-		<tag>HEAD</tag>
+		<tag>criteria-annotations-0.0.2</tag>
 	</scm>
 
 	<distributionManagement>
