@@ -11,19 +11,18 @@ class CriteriaProcessorIn implements ICriteriaProcessor {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public Predicate process(CriteriaBuilder criteriaBuilder, Root<?> root, Object object, Field field)
+	public Predicate process(final CriteriaBuilder criteriaBuilder, final Root<?> root, final Object object, final Field field)
 			throws Exception {
 		return processAnnotation(root, object, field, (path, value) -> {
 
-			if (value instanceof Collection) {
-				Collection collection = (Collection) value;
+			if (value instanceof Collection collection) {
 
 				if (collection.isEmpty()) {
 					return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
 				}
 
 			} else {
-				throw new IllegalArgumentException(String.format("%s funciona apenas para o tipo java.util.Collection", this.getClass().getSimpleName()));
+				throw new UnsupportedOperationException(formatException(Collection.class, field));
 			}
 
 			return path.in(value);

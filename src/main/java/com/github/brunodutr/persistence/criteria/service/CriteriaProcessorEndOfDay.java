@@ -13,18 +13,16 @@ class CriteriaProcessorEndOfDay implements ICriteriaProcessor {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public Predicate process(CriteriaBuilder criteriaBuilder, Root<?> root, Object object, Field field) throws Exception {
+	public Predicate process(final CriteriaBuilder criteriaBuilder, final Root<?> root, final Object object, final Field field) throws Exception {
 
 		return processAnnotation(root, object, field, (path, value) -> {
 
 			LocalDateTime dateTime;
 
-			if (value instanceof LocalDate) {
-				LocalDate date = (LocalDate) value;
+			if (value instanceof LocalDate date) {
 				dateTime = date.atStartOfDay().plusDays(1).minusSeconds(1);
 			} else {
-				throw new IllegalArgumentException(
-						"CriteriaEndOfDay funciona apenas para o tipo java.time.LocalDate");
+				throw new UnsupportedOperationException(formatException(LocalDate.class, field));
 			}
 
 			Path<LocalDateTime> pathTime = (Path<LocalDateTime>) path;
