@@ -32,7 +32,7 @@ jobs:
            release:prepare \
            release:perform \
           -s settings.xml \
-          -Dgpg.passphrase=${{ secrets.MAVEN_GPG_PASSPHRASE }} \
+          -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} \
           -DscmCommentPrefix="[maven-release-plugin][skip ci]"
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
