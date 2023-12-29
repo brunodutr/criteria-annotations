@@ -39,6 +39,8 @@ jobs:
           -DlocalCheckout=true 
           -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} 
           -DscmCommentPrefix="[maven-release-plugin][skip ci]"
+          -Dusername="GitHub Actions"
+          -Dpassword=${{ secrets.GH_TOKEN }}
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
