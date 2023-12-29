@@ -10,8 +10,8 @@
 	<url>https://github.com/brunodutr/criteria-annotations</url>
 	
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<developers>
@@ -121,12 +121,11 @@
 
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+		<!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
+		    <groupId>jakarta.persistence</groupId>
+		    <artifactId>jakarta.persistence-api</artifactId>
+		    <version>3.1.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->

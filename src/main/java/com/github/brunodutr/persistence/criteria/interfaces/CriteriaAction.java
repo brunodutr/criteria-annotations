@@ -1,6 +1,6 @@
 package com.github.brunodutr.persistence.criteria.interfaces;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
 
 @FunctionalInterface
 public interface CriteriaAction {
