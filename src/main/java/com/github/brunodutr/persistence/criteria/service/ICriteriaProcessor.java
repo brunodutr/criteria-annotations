@@ -11,7 +11,7 @@ import com.github.brunodutr.persistence.criteria.interfaces.CriteriaAction;
 
 interface ICriteriaProcessor {
 
-	Predicate process(CriteriaBuilder criteriaBuilder, Root<?> root, Object object, Field field) throws Exception;
+	Predicate process(final CriteriaBuilder criteriaBuilder, final Root<?> root, final Object object, final Field field) throws Exception;
 
 	default Predicate processAnnotation(Root<?> root, Object object, Field field, CriteriaAction criteriaAction) throws Exception {
 
@@ -25,5 +25,9 @@ interface ICriteriaProcessor {
 
 		return null;
 
+	}
+
+	default String formatException(final Class<?> type, final Field field) {
+		return String.format(this.getClass().getSimpleName() + "works only with %s. Field: %s", type.getSimpleName(), field.getName());
 	}
 }

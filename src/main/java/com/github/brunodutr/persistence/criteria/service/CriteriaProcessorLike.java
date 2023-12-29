@@ -13,18 +13,15 @@ class CriteriaProcessorLike implements ICriteriaProcessor {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Predicate process(CriteriaBuilder criteriaBuilder, Root<?> root, Object object, Field field) throws Exception {
+	public Predicate process(final CriteriaBuilder criteriaBuilder, final Root<?> root, final Object object, final Field field) throws Exception {
 		return processAnnotation(root, object, field, (path, value) ->  {
 			
-			if (!(value instanceof String)) {
-				throw new IllegalArgumentException(
-						"CriteriaLike funciona apenas para o tipo java.lang.String");
+			if (!(value instanceof String texto)) {
+				throw new UnsupportedOperationException(formatException(String.class, field));
 			}
 			
 			CriteriaLike criteriaLike = field.getAnnotation(CriteriaLike.class);
-			
-			String texto = (String) value;
-			
+
 			texto = criteriaLike.start() + texto + criteriaLike.end();
 			
 			Expression<String> pathString = (Expression<String>) path;

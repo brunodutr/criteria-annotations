@@ -1,14 +1,5 @@
 package com.github.brunodutr.persistence.criteria.service;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaEndOfDay;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaEqual;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaGreaterThan;
@@ -20,6 +11,14 @@ import com.github.brunodutr.persistence.criteria.annotations.CriteriaLike;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaNotIn;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaStartOfDay;
 import com.github.brunodutr.persistence.criteria.annotations.CriterianNotEqual;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 class CriteriaProcessorFactory {
 
@@ -39,20 +38,20 @@ class CriteriaProcessorFactory {
 		PROCESSORS.put(CriterianNotEqual.class, new CriteriaProcessorNotEqual());
 	}
 
-	public static ICriteriaProcessor getProcessor(Field field) {
+	public static ICriteriaProcessor getProcessor(final Field field) {
 
 		List<ICriteriaProcessor> processors = Stream.of(field.getAnnotations())
 				                                    .map(Annotation::annotationType)
 				                                    .map(PROCESSORS::get)
 				                                    .filter(Objects::nonNull)
-				                                    .collect(Collectors.toList());
+				                                    .toList();
 
 		if (processors.isEmpty()) {
 			return null;
 		} else if (processors.size() == 1) {
 			return processors.get(0);
 		} else {
-			throw new IllegalArgumentException(String.format("Field %s deve ter somente um predicado do Criteria Annotations", field.getName()));
+			throw new IllegalArgumentException("Only one annotation is allowed per field. Field: " + field.getName());
 		}
 
 	}

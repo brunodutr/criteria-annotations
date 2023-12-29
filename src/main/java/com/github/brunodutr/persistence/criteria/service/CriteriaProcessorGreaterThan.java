@@ -1,32 +1,30 @@
 package com.github.brunodutr.persistence.criteria.service;
 
-import java.lang.reflect.Field;
-
+import com.github.brunodutr.persistence.criteria.annotations.CriteriaGreaterThan;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
-import com.github.brunodutr.persistence.criteria.annotations.CriteriaGreaterThan;
+import java.lang.reflect.Field;
 
 class CriteriaProcessorGreaterThan implements ICriteriaProcessor {
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Predicate process(CriteriaBuilder criteriaBuilder, Root<?> root, Object object, Field field) throws Exception {
+	public Predicate process(final CriteriaBuilder criteriaBuilder, final Root<?> root, final Object object, final Field field) throws Exception {
 		
 		return processAnnotation(root, object, field, (path, value) -> {
 
-			if(!(value instanceof Comparable)) {
-				throw new UnsupportedOperationException("CriteriaProcessorGreaterThan funciona apenas para tipos que extendem java.lang.Comparable");
+			if (!(value instanceof Comparable comparable)) {
+				throw new UnsupportedOperationException(formatException(Comparable.class, field));
 			}
 			
 			Expression<Comparable> expression = (Expression<Comparable>) path;
-			Comparable comparable = (Comparable) value;
-			
+
 			CriteriaGreaterThan criteriaGreaterThan = field.getAnnotation(CriteriaGreaterThan.class);
 
-			if(criteriaGreaterThan.equal()) {
+			if (criteriaGreaterThan.equal()) {
 				
 				return criteriaBuilder.<Comparable>greaterThanOrEqualTo(expression, comparable);
 				

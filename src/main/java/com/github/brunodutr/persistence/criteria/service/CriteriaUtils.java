@@ -8,7 +8,7 @@ import com.github.brunodutr.persistence.criteria.annotations.CriteriaColumn;
 
 class CriteriaUtils {
 
-	public static Object getValueWithReflection(Object object, Field field) throws IllegalAccessException {
+	public static Object getValueWithReflection(final Object object, final Field field) throws IllegalAccessException {
 
 		boolean accesibleChanged = false;
 
@@ -26,7 +26,7 @@ class CriteriaUtils {
 		return fieldValue;
 	}
 
-	public static Boolean hasValue(Object fieldValue) {
+	public static Boolean hasValue(final Object fieldValue) {
 
 		if (fieldValue instanceof String) {
 
@@ -38,7 +38,7 @@ class CriteriaUtils {
 		}
 	}
 
-	public static String getColumnName(Field field) {
+	public static String getColumnName(final Field field) {
 
 		if (field.isAnnotationPresent(CriteriaColumn.class)) {
 
