@@ -24,7 +24,7 @@ jobs:
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v2
         with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Release
         run: |
@@ -36,4 +36,4 @@ jobs:
           -DscmCommentPrefix="[maven-release-plugin][skip ci]"
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSR_TOKEN }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
