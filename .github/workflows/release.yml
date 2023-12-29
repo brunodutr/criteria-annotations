@@ -17,10 +17,13 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
           server-id: ossrh
-      - name: Configure Git User
-        run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"
+
+      - name: Configure Git
+        uses: oleksiyrudenko/gha-git-credentials@v2.1
+        with:
+          global: true
+          token: '${{ secrets.GH_TOKEN }}'
+          
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
         with:
