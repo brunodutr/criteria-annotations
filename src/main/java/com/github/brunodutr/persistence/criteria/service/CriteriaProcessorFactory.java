@@ -10,6 +10,7 @@ import com.github.brunodutr.persistence.criteria.annotations.CriteriaLessThan;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaLike;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaNotIn;
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaStartOfDay;
+import com.github.brunodutr.persistence.criteria.annotations.CriteriaSubQuery;
 import com.github.brunodutr.persistence.criteria.annotations.CriterianNotEqual;
 
 import java.lang.annotation.Annotation;
@@ -36,6 +37,7 @@ class CriteriaProcessorFactory {
 		PROCESSORS.put(CriteriaIsNull.class, new CriteriaProcessorIsNull());
 		PROCESSORS.put(CriteriaIsNotNull.class, new CriteriaProcessorIsNotNull());
 		PROCESSORS.put(CriterianNotEqual.class, new CriteriaProcessorNotEqual());
+		PROCESSORS.put(CriteriaSubQuery.class, new CriteriaProcessorSubQuery());
 	}
 
 	public static ICriteriaProcessor getProcessor(final Field field) {
