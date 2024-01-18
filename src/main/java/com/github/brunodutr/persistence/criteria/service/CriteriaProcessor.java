@@ -24,6 +24,7 @@ public class CriteriaProcessor<T> {
 	private Integer page;
 	private Integer size;
 	private CriteriaQuery<T> criteriaQuery;
+	private CriteriaQuery<Long> countCriteriaQuery;
 	private EntityManager entityManager;
 	
 	private Predicate[] where() {
@@ -86,6 +87,7 @@ public class CriteriaProcessor<T> {
 		this.entityManager = entityManager;
 		this.criteriaBuilder = entityManager.getCriteriaBuilder();
 		this.criteriaQuery = criteriaBuilder.createQuery(entityClass);
+		this.countCriteriaQuery = criteriaBuilder.createQuery(Long.class);
 		this.root = criteriaQuery.from(entityClass);
 	}
 	
@@ -129,7 +131,17 @@ public class CriteriaProcessor<T> {
 
 		return query.getResultList();
 	}
-	
+
+	public Long count() {
+
+		countCriteriaQuery.where(where());
+		countCriteriaQuery.select(criteriaBuilder.count(root));
+
+		TypedQuery<Long> query = entityManager.createQuery(countCriteriaQuery);
+
+		return query.getSingleResult();
+
+	}
 	
 
 }
