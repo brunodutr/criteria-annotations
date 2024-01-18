@@ -14,6 +14,8 @@ public @interface CriteriaSubQuery {
 
     Class<?> type();
 
+    Class<?> entity();
+
     String field();
 
     String path() default "";

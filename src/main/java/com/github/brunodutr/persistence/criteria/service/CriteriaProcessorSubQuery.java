@@ -25,8 +25,12 @@ class CriteriaProcessorSubQuery implements ICriteriaProcessor {
                 throw new UnsupportedOperationException("CriteriaSubQuery.type() is required");
             }
 
+            if (criteriaSubQuery.entity() == null) {
+                throw new UnsupportedOperationException("CriteriaSubQuery.entity() is required");
+            }
+
             Subquery subquery = criteriaQuery.subquery(criteriaSubQuery.type());
-            Root subRoot = subquery.from(criteriaSubQuery.type());
+            Root subRoot = subquery.from(criteriaSubQuery.entity());
 
             if (criteriaSubQuery.field() == null || criteriaSubQuery.field().isBlank()) {
                 subquery.select(subRoot.get(columnName));
