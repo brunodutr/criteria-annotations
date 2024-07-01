@@ -137,7 +137,7 @@ public class CriteriaProcessor<T> {
 
 			return Stream.of(criteriaOrderBy.columns()).filter(StringUtils::isNotBlank).map(column -> {
 
-				Path<Object> path = root.get(column);
+				Path<?> path = CriteriaUtils.getPath(root, column);
 
 				if (sort.equals("asc")) {
 					return criteriaBuilder.asc(path);

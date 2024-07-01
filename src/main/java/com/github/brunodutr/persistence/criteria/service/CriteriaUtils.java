@@ -6,6 +6,9 @@ import java.lang.reflect.Field;
 
 import com.github.brunodutr.persistence.criteria.annotations.CriteriaColumn;
 
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Root;
+
 class CriteriaUtils {
 
 	public static Object getValueWithReflection(final Object object, final Field field) throws IllegalAccessException {
@@ -52,5 +55,19 @@ class CriteriaUtils {
 
 		return field.getName();
 
+	}
+
+	public static Path<?> getPath(final Root<?> root, final String columnName) {
+
+		if (columnName.contains(".")) {
+			String[] columnNames = columnName.split("\\.");
+			Path<?> path = root.get(columnNames[0]);
+			for (int i = 1; i < columnNames.length; i++) {
+				path = path.get(columnNames[i]);
+			}
+			return path;
+		}
+
+		return root.get(columnName);
 	}
 }
